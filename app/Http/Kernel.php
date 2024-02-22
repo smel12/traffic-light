@@ -38,9 +38,13 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
 
+			/** 
+				Так как неаше веб-приложение "Светофор" очень активно может использоватьAPI,
+				то необходимо отключит Trottle для API, чтобы избежать ошибки '429 Too Many Requests'
+			*/
         'api' => [
             // \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
-            \Illuminate\Routing\Middleware\ThrottleRequests::class.':api',
+//	        \Illuminate\Routing\Middleware\ThrottleRequests::class.':api',			// Отключаем Trottle для API
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
     ];
